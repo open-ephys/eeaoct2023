@@ -424,7 +424,7 @@
 <a class="reference external image-reference" href="https://tinyurl.com/y4aps4r2"><img alt="../_images/op_amp_spikes_ref.png" class="align-center" src="../_images/op_amp_spikes_ref.png" /></a>
 <p>To make this circuit differential, we need voltage dividers. But these are connecting our fragile signal to ground! Plus, any mismatch in the input impedances between ‘+’ and ‘-’ messes up the signal if there is a lot of common mode noise. In practical terms, there is always going to be a mismatch between these resistors, they simply cannot be produced in a way that makes them exactly equal.</p>
 <p>Why? Because this resistor is <em>also your electrode</em>. If you work with electrodes, have you measured their impedances? How similar are they? If you made these resistors as different as your electrodes are variable, this circuit will not work to eliminate common mode noise and amplify our spikes.</p>
-<p>The solution is to use <em>three</em> op-amps:</p>
+<p>The solution implemented in instrumentation amps is to use <em>three</em> op-amps:</p>
 <a class="reference internal image-reference" href="../_images/three_op_amps.png"><img alt="../_images/three_op_amps.png" class="align-center" src="../_images/three_op_amps.png" style="width: 568.0px; height: 228.0px;" /></a>
 <div class="line-block">
 <div class="line"><br /></div>
