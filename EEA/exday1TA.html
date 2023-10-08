@@ -326,6 +326,13 @@ For many students, day 1 is about getting to know the equipment &amp; using the 
 <img alt="../_images/breadboard_connectivity.png" class="align-center" src="../_images/breadboard_connectivity.png" />
 <p>The most important thing is to remember which holes are connected. Your long breadboard is actually made up of two separate breadboards; as you can see above, the power rails run through rows 0-30 and 31-60. If you want to use the entire length of the breadboard, you will have to connect these rails together with wires.</p>
 <p>If you need to, refer back to the <a class="reference external" href="https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all#anatomy-of-a-breadboard">reading material</a> for the overview on how to use a breadboard, it also includes some basic troubleshooting which may prove useful if you run into problems.</p>
+<div class="exercise docutils container">
+<blockquote>
+<div><p>You can also use your multimeter to check for continuity, i.e. to find out if two parts of a circuit are electrically connected.</p>
+</div></blockquote>
+<p>1C.   Set the multimeter dial to the section that has a diode symbol (a triangle with a line on the right side) and a symbol that looks like a soundwave. Now the multimeter should beep when you touch the terminals together, indicating there is continuity. You can use this setting to probe around the breadboard and understand which rows are connected. If the probe tips don’t fit in the holes, you might have to use readout wires to access the underlying circuit.
+<em>Check that the rails are connected all the way along the breadboard by putting one probe in one end of the rail and the other probe in the other end of the same rail.</em></p>
+</div>
 </section>
 <section id="teensy-microcontroller">
 <h3><a class="toc-backref" href="#id3">Teensy Microcontroller</a><a class="headerlink" href="#teensy-microcontroller" title="Permalink to this headline">#</a></h3>
@@ -401,7 +408,7 @@ For many students, day 1 is about getting to know the equipment &amp; using the 
 </ul>
 <p><a class="reference internal" href="sinewave.html#sinewave"><span class="std std-ref">Sinewave</span></a></p>
 <ul class="simple">
-<li><p>Make sure that under ‘Tools/ Board’ your Teensy 3.2 has been found, and check which USB (COM) port it’s in (‘Tools/Port:).</p></li>
+<li><p>Make sure that under ‘Tools/ Board’ your Teensy LC has been found, and check which USB (COM) port it’s in (‘Tools/Port:).</p></li>
 <li><p>If you see ‘Done Uploading’, the Teensy will start giving a sine wave as output from one of the analog output pins.</p></li>
 </ul>
 <p>2B.   Connect your oscilloscope probe to A12 and visualise the signal in your PicoScope software.</p>
@@ -431,6 +438,7 @@ Right-click on the top wire in the circuit, and then select Edit to display the 
 </div>
 <div class="tabox docutils container">
 <p>3A: The current should increase with decreased circuit resistance. The current change affects the entire circuit; current is the same everywhere.</p>
+<p>Decreasing the resistance of any of the two resistors increases the current since they are in series and V = I * (R1+R2). Changing the ratio of the resistors changes the voltage drop over each resistor.</p>
 </div>
 </section>
 <section id="resistors">
@@ -449,8 +457,7 @@ Right-click on the top wire in the circuit, and then select Edit to display the 
 <p>Now double the value of the left-hand resistor in the simulator and see if your predictions were correct.</p>
 </div>
 <div class="tabox docutils container">
-<p>Students can get confused about using Ohm’s law over a whole closed circuit (to get current) and over individual components (voltage drops). It helps to remind them at which points in the circuit current must be equal and where voltage must be highest and lowest. Check that they understand why the current across these two resistors can be different, but not in the closed circuit above.
-Decreasing the resistance of any of the two resistors increases the current since they are in series and V = I * (R1+R2). Changes the ratio of the resistors changes the voltage drop over each resistor.</p>
+<p>Students can get confused about using Ohm’s law over a whole closed circuit (to get current) and over individual components (voltage drops). It helps to remind them at which points in the circuit current must be equal and where voltage must be highest and lowest. Check that they understand why the current across these two resistors can be different, but not in the closed circuit above.</p>
 <p>4A: The voltage will not change; voltage over both resistors is the same as they are connected in parallel to a 5V source. The current will vary in proportion to resistance, so it will halve if the resistance doubles.</p>
 <p>4B: Nothing will change for this branch of the circuit.</p>
 <p>Circuit analysis refresher:
@@ -482,6 +489,8 @@ Decreasing the resistance of any of the two resistors increases the current sinc
 <div class="tabox docutils container">
 <p>5A: Example answer:</p>
 <a class="reference external image-reference" href="https://tinyurl.com/y3fshb8c"><img alt="../_images/voltage_divider_sim_solution.png" class="align-center" src="../_images/voltage_divider_sim_solution.png" /></a>
+<p>A way of thinking about this is 3 V must be spent. If R1 = R2, then it is spent equally amongst them and Vout = 1.5 V. Since we want to achieve a Vout larger than 1.5 V, less voltage has to be spent on the first part of the circuit. Current is the same so less V means less R. R2 has to be larger than R1 and we get more Vout than when R1=R2.
+The resulting Vout will always depend on the ratio of the resistors.</p>
 <p>Sparkfun overview:
 <a class="reference external" href="https://learn.sparkfun.com/tutorials/voltage-dividers/all#extra-credit-proof">https://learn.sparkfun.com/tutorials/voltage-dividers/all#extra-credit-proof</a></p>
 </div>
@@ -496,8 +505,10 @@ Decreasing the resistance of any of the two resistors increases the current sinc
 <p>Bonus exercise: Replace one of the resistors to make your output voltage as small as you can get it. What’s the smallest reading you can still pick up with your multimeter? How does this compare to the amplitude of a spike measured in the extracellular space?</p>
 </div>
 <div class="tabox docutils container">
-<p>5B: This should work with a 1k and 2.2k resistor as shown.
-Bonus: The amplitude of a spike in extracellular space is around 100 uV. This should help them to realise how little that is.</p>
+<p>5B: This should work with a 1k and 2.2k resistor as shown.</p>
+<p>Bonus: For the sake of time, you can just ask them which resistor would they change and how.
+To get small Vout, R1 has to be larger than R2. Most voltage is spent in the first part of the circuit.
+Multimeter minimum is in the 200 mV range. The amplitude of a spike in extracellular space is around 100 uV. This should help them to realise how little that is.</p>
 </div>
 </section>
 </section>
@@ -568,11 +579,14 @@ Bonus: The amplitude of a spike in extracellular space is around 100 uV. This sh
 <p>(Bonus question: what happens to the voltage drop across the capacitor as frequency increases?)</p>
 </div>
 <div class="tabox docutils container">
-<p>8A. The 40Hz circuit below has a max current of 20mA, the above circuit has a max of only 12mA.</p>
+<p><a class="reference external" href="https://tinyurl.com/y4cgeap9">Link to solution:</a></p>
+<blockquote>
+<div><p>8A. The 40Hz bottom circuit has a max current of 20mA, the top circuit has a max of only 12mA.</p>
 <p>8B. This new circuit will have a max current of 24.4 mA.</p>
 <p>With increasing frequency, the impedance of the capacitor decreases. That means that:
 - The overall current in the circuit increases (I = V/R with lower R)
 - The ratio of impedance between the 200 Ohm resistor and the capacitor changes. It’s another voltage divider: the 5 volt must still be ‘spent’ in the circuit, but more of it now goes to the 200 Ohm resistor. The voltage drop over the capacitor reduces as its impedance reduces.</p>
+</div></blockquote>
 </div>
 </section>
 <section id="capacitive-voltage-divider">

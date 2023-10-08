@@ -195,13 +195,13 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-recording-circuit-without-an-amplifier">
-     4A. Recording circuit without an amplifier
+    <a class="reference internal nav-link" href="#a-recording-circuit-without-a-headstage">
+     4A. Recording circuit without a ‘headstage’
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#b-recording-circuit-with-amplifier">
-     4B. Recording circuit with amplifier
+    <a class="reference internal nav-link" href="#b-recording-circuit-with-a-headstage">
+     4B. Recording circuit with a ‘headstage’
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
@@ -264,8 +264,8 @@
 </li>
 <li><p><a class="reference internal" href="#operational-amplifiers" id="id5">4. Operational Amplifiers</a></p>
 <ul>
-<li><p><a class="reference internal" href="#a-recording-circuit-without-an-amplifier" id="id6">4A. Recording circuit without an amplifier</a></p></li>
-<li><p><a class="reference internal" href="#b-recording-circuit-with-amplifier" id="id7">4B. Recording circuit with amplifier</a></p></li>
+<li><p><a class="reference internal" href="#a-recording-circuit-without-a-headstage" id="id6">4A. Recording circuit without a ‘headstage’</a></p></li>
+<li><p><a class="reference internal" href="#b-recording-circuit-with-a-headstage" id="id7">4B. Recording circuit with a ‘headstage’</a></p></li>
 <li><p><a class="reference internal" href="#add-bypass-capacitors" id="id8">Add bypass capacitors</a></p></li>
 <li><p><a class="reference internal" href="#add-a-headstage" id="id9">Add a ‘headstage’</a></p></li>
 </ul>
@@ -369,7 +369,7 @@ Some students will already put the negative feedback in here, just make sure the
 <section id="operational-amplifiers">
 <h2><a class="toc-backref" href="#id5">4. Operational Amplifiers</a><a class="headerlink" href="#operational-amplifiers" title="Permalink to this headline">#</a></h2>
 <p>We will now build the same circuit on the breadboard. The Teensy ‘Blink’ signal will act as our neuronal data, that will travel across electrode and shunt impedances before reaching the oscilloscope to be recorded. Our goal is to get as much of the Blink signal as possible to reach our oscilloscope recording system.</p>
-<p>In the theory handout, we discussed the importance of headstages. We’ll test that now, by building the recording circuit without and with an amplifier acting as a headstage.</p>
+<p>In the theory handout, we discussed the importance of headstages. We’ll test that now, by building the recording circuit without and with an op-amp acting as a headstage.</p>
 <ul class="simple">
 <li><p>‘Neuron’  = Digital blink output from Teensy</p></li>
 <li><p>‘Electrode’ = 100 kOhm resistor</p></li>
@@ -378,10 +378,10 @@ Some students will already put the negative feedback in here, just make sure the
 <li><p>‘Recording system’ = the Picoscope</p></li>
 </ul>
 <a class="reference external image-reference" href="https://tinyurl.com/yyeah3wd"><img alt="../_images/circuitday2.png" class="align-center" src="../_images/circuitday2.png" /></a>
-<section id="a-recording-circuit-without-an-amplifier">
-<h3><a class="toc-backref" href="#id6">4A. Recording circuit without an amplifier</a><a class="headerlink" href="#a-recording-circuit-without-an-amplifier" title="Permalink to this headline">#</a></h3>
+<section id="a-recording-circuit-without-a-headstage">
+<h3><a class="toc-backref" href="#id6">4A. Recording circuit without a ‘headstage’</a><a class="headerlink" href="#a-recording-circuit-without-a-headstage" title="Permalink to this headline">#</a></h3>
 <div class="exercise docutils container">
-<p>4A.   Upload the Blink example to your teensy (or just run it if still loaded).</p>
+<p>4A.   Upload the Blink example to your Teensy (File/Examples/Basics/Blink)(or just run it if still loaded).</p>
 <p>Build the circuit below:</p>
 <ul class="simple">
 <li><p>Send the Teensy output through a 100 KOhm resistor. This makes it behave a bit like a biological signal coming from an electrode.</p></li>
@@ -401,8 +401,8 @@ Some students will already put the negative feedback in here, just make sure the
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>(+) Probe Location</p></th>
-<th class="head"><p>Circuit 1, without amplifier</p></th>
-<th class="head"><p>Circuit 2, with amplifier</p></th>
+<th class="head"><p>Circuit 1, without ‘headstage’</p></th>
+<th class="head"><p>Circuit 2, with ‘headstage’</p></th>
 </tr>
 </thead>
 <tbody>
@@ -432,8 +432,8 @@ Some students will already put the negative feedback in here, just make sure the
 <p>4C. How much signal is lost?</p>
 </div>
 </section>
-<section id="b-recording-circuit-with-amplifier">
-<h3><a class="toc-backref" href="#id7">4B. Recording circuit with amplifier</a><a class="headerlink" href="#b-recording-circuit-with-amplifier" title="Permalink to this headline">#</a></h3>
+<section id="b-recording-circuit-with-a-headstage">
+<h3><a class="toc-backref" href="#id7">4B. Recording circuit with a ‘headstage’</a><a class="headerlink" href="#b-recording-circuit-with-a-headstage" title="Permalink to this headline">#</a></h3>
 <section id="build-voltage-rails">
 <h4>Build voltage rails<a class="headerlink" href="#build-voltage-rails" title="Permalink to this headline">#</a></h4>
 <div class="admonition warning">
@@ -457,7 +457,8 @@ Some students will already put the negative feedback in here, just make sure the
 <section id="add-bypass-capacitors">
 <h3><a class="toc-backref" href="#id8">Add bypass capacitors</a><a class="headerlink" href="#add-bypass-capacitors" title="Permalink to this headline">#</a></h3>
 <p>Bypass capacitors are small capacitors that act like little secondary batteries. The batteries we use have a high ESR - ‘equivalent series resistance’, and some capacitance. This means that are not great at quickly providing current. Because of this, when our op-amp starts working, it can run out of current for a very short time until the battery can drive the rails back to their original voltage. This is bad for the signal quality.</p>
-<p>So, we allow these small capacitors to charge. If the battery briefly can’t provide current, the bypass capacitors will discharge, providing quick back-up current. We’re exploiting the fact that these caps have very low ESR and can provide current pretty much instantaneously. The fact that they’re too small to power anything for more than a millisecond does not matter here, at that point the batteries have caught up.</p>
+<p>So, we allow these small capacitors to charge. If the battery briefly can’t provide current, the bypass capacitors will discharge, providing quick back-up current. We’re exploiting the fact that these caps have very low ESR and can provide current pretty much instantaneously. The fact that they’re too small to power anything for more than a millisecond does not matter here, at that point the batteries have caught up.
+<a class="reference external" href="https://www.protoexpress.com/blog/decoupling-capacitor-use/">More explanation:</a></p>
 <div class="exercise docutils container">
 <p>4E. Add two 100nF (marked 104) caps, one to each rail, so connecting GND to 3V and connecting GND to -3V.</p>
 <img alt="../_images/fritz_bipolar_power_supply.png" class="align-center" src="../_images/fritz_bipolar_power_supply.png" />
@@ -476,9 +477,9 @@ Some students will already put the negative feedback in here, just make sure the
 <li><p>Put the electrode output wire into the + input of your op-amp, and the output of the op-amp into the ‘wire’ simulation circuit.</p></li>
 <li><p>Feed the output of the op-amp, back into the – input.</p></li>
 </ul>
-<p>4G. Now measure the same three points as before and complete the table in question 4B.         -</p>
+<p>4G. Now measure the same three points as before and complete the table in question 4B. How much signal is lost now? Is the signal being amplified?</p>
 <p>4H. Optional: try changing the resistances you’ve used for electrode, shunt, and leakage. What happens to the signal?</p>
-<p>4G. Optional: Measure the same points in the simulator as you did on the breadboard. How do they compare?</p>
+<p>4I. Optional: Measure the same points in the simulator as you did on the breadboard. How do they compare?</p>
 <img alt="../_images/fritz_headstage_blink.png" class="align-center" src="../_images/fritz_headstage_blink.png" />
 <img alt="../_images/amp_headstage_blink.png" class="align-center" src="../_images/amp_headstage_blink.png" />
 </div>
