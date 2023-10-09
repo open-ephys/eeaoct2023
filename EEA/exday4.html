@@ -305,6 +305,11 @@
      Streaming data from the microcontroller
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#synchronising-additional-input-signals-and-system-outputs">
+     Synchronising additional input signals and system outputs
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -352,6 +357,7 @@
 <ul>
 <li><p><a class="reference internal" href="#shifting-the-signal" id="id8">Shifting the signal</a></p></li>
 <li><p><a class="reference internal" href="#streaming-data-from-the-microcontroller" id="id9">Streaming data from the microcontroller</a></p></li>
+<li><p><a class="reference internal" href="#synchronising-additional-input-signals-and-system-outputs" id="id10">Synchronising additional input signals and system outputs</a></p></li>
 </ul>
 </li>
 </ul>
@@ -481,10 +487,24 @@
 </div></blockquote>
 </li>
 <li><p>Unless still uploaded, reupload <a class="reference internal" href="Firmata_cajal.html#firmata"><span class="std std-ref">Firmata for Cajal Course</span></a> to your teensy in the Arduino software. This will tell the Teensy to acquire from analog pins at 2000 samples per second.</p></li>
-<li><p>Open Bonsai and create an Analog Input node. Double-click this node to visualise your signal.</p></li>
-<li><p>Connect this to a ‘Csv Writer’ node to save your signals.</p></li>
 </ol>
+<p>C. Open Bonsai and create an ‘Analog Input’ node. Configure the pin and port name accordingly. Run the workflow and double-click this node to visualise your signal.
+What important step in data acquisition are we missing?</p>
+<p>D. Connect the ‘Analog Input’ node to a ‘Csv Writer’ node to save your signal. This format will allow you to quickly inspect the saved file. If you want to be able to later load and playback the file, use the ‘Buffer’ and ‘MatrixWriter’ nodes instead.
+Open the csv file. Does your data have timestamps? What do you need to know to figure out when each sample was acquired?
+What would you need to consider to be able to synchronize with other inputs such as other analog signals or a camera or behavioral events?
+What additional signal processing of is typically useful when dealing with ephys signals?</p>
 </div>
+</section>
+<section id="synchronising-additional-input-signals-and-system-outputs">
+<h3><a class="toc-backref" href="#id10">Synchronising additional input signals and system outputs</a><a class="headerlink" href="#synchronising-additional-input-signals-and-system-outputs" title="Permalink to this headline">#</a></h3>
+<p>We might want to record additional input signals from other sensors, or add a behavioural camera to this EMG setup, or to find out when a behavioural event such as a nosepoke occurred in relation to the ephys signals. As we saw in the Theory handout, this requires signals to be synchronised.</p>
+<p>In Bonsai, you could use a ‘Timestamp’ node to figure out at what time the signals were acquired by the computer. This is an example of software synchronisation, and will include the jitter in USB latency from both datastreams arriving independently at the computer, and the processing time until the computer’s operating system can handle the timestamping request (since timestamping is not its only job).</p>
+<p>For precise synchronisation at fast timescales, you would need to acquire all inputs on the same dedicated hardware clock such as that of an actual ephys acquisition device. This dedicated hardware runs multichannel acquisition in parallel and timestamps all signals at a fast sampling rate, rather than acquiring consecutively inside a loop and relying on software timestamping like our Teensy microcontroller.</p>
+<p>In ephys acquisition systems, besides multichannel headstage data acquisition, you typically have additional analog input channels for other sensors, and use digital inputs to record digital pulses that indicate when events such as camera frame acquisition or behavioural events occurred. We cannot do this in our Teensy EMG setup.</p>
+<p>Finally, we might want our acquisition system to output signals based on the data being acquired, such as electrical or optical stimulation based on neural events, which can trigger other systems connected to digital output channels.</p>
+<p>Dedicated data acquisition software have online signal processing capabilities that are useful for signal visualisation, for alignment with stimuli/behavioural events and for closed-loop experimentation.</p>
+<p>In our case, we can perform online signal processing in Bonsai, for example to smooth or filter the acquired signal, to threshold it and trigger an output. We are not going to go into detail about this, but you are welcome to explore it in your Projects.</p>
 </section>
 </section>
 </section>

@@ -313,7 +313,7 @@ Can we use this shiny new differential amplifier to record neural signals?</p>
 <ul class="simple">
 <li><p>The electrodes in your kit. The disposable electrodes in the kit are single-use, so do not attach them until you are sure your circuit is working and that you have the correct position (see below).</p></li>
 <li><p>The electrodes clip onto the cable with three wires. We’ll be using an audio-to-breadboard jack to get the signal from the electrodes into the breadboard.</p></li>
-<li><p>An instrumentation amplifier as our ‘headstage’. <a class="reference external" href="https://www.ti.com/lit/ds/symlink/ina129-ep.pdf?ts=1636717545454&amp;ref_url=https%253A%252F%252Fwww.google.com%252F">This</a> is the datasheet for the instrumentation amplifier in your kit.</p></li>
+<li><p>An instrumentation amplifier as our ‘headstage’. <a class="reference external" href="https://www.analog.com/media/en/technical-documentation/data-sheets/AD622.pdf">This</a> is the datasheet for the instrumentation amplifier in your kit.</p></li>
 </ul>
 <img alt="../_images/instr_amp_pinout.png" class="align-center" src="../_images/instr_amp_pinout.png" />
 <ul class="simple">
@@ -366,6 +366,7 @@ Can we use this shiny new differential amplifier to record neural signals?</p>
 With a larger resistor for Rg we get less gain. Formula for instrumental amplifier gain = (R3/R2){(2R1+Rgain)/Rgain}.</p>
 <p>Therefore, the lower the value for Rg the more gain we should get, for instance try going from 220 Ohm to 100 Ohm. I did not manage to get it to saturate, but in theory this could happen at really high gain.</p>
 </div>
+<p>Tomorrow we will feed the EMG signal to our PC through the Teensy microcontroller instead of reading them using the PicoScope. Don’t disassemble the circuit.</p>
 </section>
 </section>
 
